@@ -4,43 +4,83 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp41
+namespace Exersice6
 {
-   
     class Program
     {
-        
+        static void PrintMas(double[]mas)
+        {
+            if (mas.Length == 0) return;
+            else
+                for(int i=0;i<mas.Length;i++)
+                {
+                    Console.WriteLine("Ваша последовательность");
+                    Console.WriteLine(mas[i]);
+                    
+                }
+        }
+        static  double Function(double[]mas,int i)
+        {
+            if (i == 0)
+            {
+                return mas[0];
+            }
+            else
+            if (i == 1)
+            {
+                return mas[1];
+            }
+            else
+            if (i == 2)
+            {
+                return mas[2];
+            }
+            else
+                return mas[i]= 0.7 * mas[i - 1] - 0.2 * mas[i - 2] + i * mas[i - 3];
+        }
+
         static void Main(string[] args)
         {
-            
+            int a1, a2, a3, N;
             Console.WriteLine("Введите число a1");
-            double a1 = double.Parse(Console.ReadLine());
+            a1 = int.Parse(Console.ReadLine());
            
             Console.WriteLine("Введите число a2");
-            double a2 = double.Parse(Console.ReadLine());
+            a2 = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите число a3");
-            double a3 = double.Parse(Console.ReadLine());
+            a3 = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Введите число элементов N");
-            int N = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите количество элементов массива N");
+            N = Convert.ToInt32(Console.ReadLine());
 
-            int [] mas = new int[N];
-
-            for(int i=0;i<N;i++)
+            try
             {
-                Console.WriteLine("Введите {0} элемент массива",i);
-                mas[i] = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine(mas[i]);
-                Console.ReadKey();
+                double[] mas = new double[N];
+                mas[0] = a1;
+                mas[1] = a2;
+                mas[2] = a3;
+
+                int place = 3;
+
+                while(place<mas.Length)
+                {
+                    Function(mas, place);
+                    place++;
+
+                }
+                PrintMas(mas);
+
+            }
+            catch
+            {
+                Console.WriteLine("Был задан неверный размер массива");
             }
 
-            double Function(int k)
-            {
 
-               return 0.7 * (k- 1) - 0.2 * (k - 2) + k* (k - 3);
+            
 
-            }
+            
         }
     }
 }
