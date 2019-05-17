@@ -8,6 +8,8 @@ namespace Exersice6
 {
     class Program
     {
+        static bool ok = false;
+        static bool NeMonoton = true;
         static void PrintMas(double[]mas)
         {
             if (mas.Length == 0) return;
@@ -39,48 +41,97 @@ namespace Exersice6
                 return mas[i]= 0.7 * mas[i - 1] - 0.2 * mas[i - 2] + i * mas[i - 3];
         }
 
+        static void NeChetnost(double [] mas)
+        {
+            int Length=0;
+            for (int i = 1; i < mas.Length + 1; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    Length++;
+                }
+                else continue;
+            }
+
+            double [] NeChetMas = new double[Length];
+            int count= 0;
+            for (int i = 1; i < mas.Length + 1; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    NeChetMas[count] = mas[i - 1];
+                    count++;
+                }
+                else continue;
+            }
+            PrintMas(NeChetMas);
+
+            for(int i=1;i< NeChetMas.Length;i++)
+            {
+                if (NeChetMas[i - 1] < NeChetMas[i])
+                {
+                    ok = false;
+                    NeMonoton = false;
+                   
+                }
+                else if (NeChetMas[i - 1] > NeChetMas[i])
+                {
+                    ok = true;
+                    NeMonoton = false;
+                   
+                }
+                else NeMonoton = true;
+            }
+        }
+
         static void Main(string[] args)
         {
             int a1, a2, a3, N;
+           
             Console.WriteLine("Введите число a1");
             a1 = int.Parse(Console.ReadLine());
-           
+
             Console.WriteLine("Введите число a2");
             a2 = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите число a3");
             a3 = int.Parse(Console.ReadLine());
-
+    
             Console.WriteLine("Введите количество элементов массива N");
             N = Convert.ToInt32(Console.ReadLine());
 
             try
             {
-                double[] mas = new double[N];
-                mas[0] = a1;
-                mas[1] = a2;
-                mas[2] = a3;
+                double[] mas1 = new double[N];
+                mas1[0] = a1;
+                mas1[1] = a2;
+                mas1[2] = a3;
 
                 int place = 3;
 
-                while(place<mas.Length)
+                while(place<mas1.Length)
                 {
-                    Function(mas, place);
+                    Function(mas1, place);
                     place++;
 
                 }
-                PrintMas(mas);
+                PrintMas(mas1);
 
+                Console.WriteLine("Массив с нечетными элементами");
+                NeChetnost(mas1);
             }
             catch
             {
                 Console.WriteLine("Был задан неверный размер массива");
             }
 
+            Console.WriteLine();
 
-            
-
-            
+            Console.WriteLine("Определение последовательности на монотонность");
+            if (ok == false && NeMonoton == false) Console.WriteLine("Монотонная неубывающая последовательность возрастает");
+            else if (ok == true && NeMonoton == false) Console.WriteLine("Монотонная убывающая убывает");
+            else Console.WriteLine("Не монотонная");
+            Console.ReadKey();
         }
     }
 }
