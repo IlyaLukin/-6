@@ -88,18 +88,34 @@ namespace Exersice6
         {
             int a1, a2, a3, N;
            
-            Console.WriteLine("Введите число a1");
-            a1 = int.Parse(Console.ReadLine());
+             do
+            {
+                Console.WriteLine("Введите число a1");
+                string name = Console.ReadLine();
+                ok = int.TryParse(name, out a1);
+            } while (!ok);
 
-            Console.WriteLine("Введите число a2");
-            a2 = int.Parse(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("Введите число a2");
+                string name = Console.ReadLine();
+                ok = int.TryParse(name, out a2);
+            } while (!ok);
 
-            Console.WriteLine("Введите число a3");
-            a3 = int.Parse(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("Введите число a3");
+                string name = Console.ReadLine();
+                ok = int.TryParse(name, out a3);
+            } while (!ok);
     
-            Console.WriteLine("Введите количество элементов массива N");
-            N = Convert.ToInt32(Console.ReadLine());
-
+            do
+            {
+                Console.WriteLine("Введите количество элементов массива N");
+                string name = Console.ReadLine();
+                ok = int.TryParse(name, out N);
+            } while (!ok);
+            
             try
             {
                 double[] mas1 = new double[N];
