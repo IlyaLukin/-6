@@ -12,13 +12,12 @@ namespace Exersice6
         static bool NeMonoton = true;
         static void PrintMas(double[]mas)
         {
+            Console.WriteLine("Ваша последовательность");
             if (mas.Length == 0) return;
             else
                 for(int i=0;i<mas.Length;i++)
                 {
-                    Console.WriteLine("Ваша последовательность");
-                    Console.WriteLine(mas[i]);
-                    
+                    Console.WriteLine(mas[i]+" "); 
                 }
         }
         static  double Function(double[]mas,int i)
@@ -145,7 +144,7 @@ namespace Exersice6
 
             Console.WriteLine("Определение последовательности на монотонность");
             if (ok == false && NeMonoton == false) Console.WriteLine("Монотонная неубывающая последовательность возрастает");
-            else if (ok == true && NeMonoton == false) Console.WriteLine("Монотонная убывающая убывает");
+            else if (ok == true && NeMonoton == false) Console.WriteLine("Монотонная убывающая последовательность");
             else Console.WriteLine("Не монотонная");
             Console.ReadKey();
         }
